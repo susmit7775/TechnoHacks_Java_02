@@ -1,0 +1,57 @@
+package TechnoHacks;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Todo {
+    public static void main(String[] args) {
+        System.out.println("Welcome to your to-do Manager!");
+        System.out.print("Enter Your Name : ");
+        ArrayList<String> toDos = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        String name = sc.next();
+        System.out.println("Hi, Good Evening/Morning " + name);
+
+        while(true) {
+            System.out.println("To-do List");
+            for (int i = 0; i < toDos.size(); i++) {
+                System.out.println((i + 1) + ". " + toDos.get(i));
+            }
+            System.out.println("\n Options :");
+            System.out.println("1. Add Task");
+            System.out.println("2. Remove Task");
+            System.out.println("3. Exit");
+            System.out.print("Enter input : ");
+
+            int Choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (Choice) {
+                case 1 :
+                    System.out.print("Enter a new Task :");
+                    String newtask = sc.nextLine();
+                    toDos.add(newtask);
+                    System.out.println("Task Added Successfully!\n");
+                    break;
+                case 2 :
+                    System.out.print("Enter a Task to remove :");
+                    int index = sc.nextInt();
+
+                    if (index>0 && index <= toDos.size()) {
+                        toDos.remove(index - 1);
+                        System.out.println("Task removed successfully!\n");
+                    } else {
+                        System.out.println("Task OverFlow \n");
+                    }
+                    break;
+                case 3 :
+                    System.out.print("Exit from the Menu :");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid Option Selected");
+                    break;
+            }
+
+        }
+    }
+}
